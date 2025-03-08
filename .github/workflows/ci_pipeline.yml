@@ -30,7 +30,7 @@ jobs:
 
     strategy:
       matrix:
-       os: [ubuntu-22.04, windows-latest, macos-latest]
+       os: [macos-latest-large]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -41,15 +41,15 @@ jobs:
         python-version: '3.12'
     
     # Step to cache Poetry dependencies
-    - name: Cache Poetry dependencies
-      uses: actions/cache@v2
-      with:
-        path: |
-          ~/.cache/pypoetry
-          ~/.cache/pip
-        key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-poetry-
+    # - name: Cache Poetry dependencies
+    #   uses: actions/cache@v2
+    #   with:
+    #     path: |
+    #       ~/.cache/pypoetry
+    #       ~/.cache/pip
+    #     key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-poetry-
 
     - name: Install Dependencies
       run: |
